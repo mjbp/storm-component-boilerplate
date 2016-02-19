@@ -1,7 +1,7 @@
 /**
  * @name storm-component-boilerplate: 
- * @version 0.1.0: Wed, 10 Feb 2016 11:18:31 GMT
- * @author mjbp
+ * @version 0.1.0: Fri, 19 Feb 2016 14:02:00 GMT
+ * @author stormid
  * @license MIT
  */(function(root, factory) {
   if (typeof define === 'function' && define.amd) {
@@ -15,23 +15,20 @@
 	'use strict';
     
     var instances = [],
+        assign = require('object-assign'),
+        merge = require('merge'),
         defaults = {
             delay: 200,
             callback: null
         },
-        merge = require('merge');
-    
-    
-    function StormComponentBoilerplate(el, opts) {
-        this.settings = merge({}, defaults, opts);
-        this.DOMElement = el;
-        this.DOMElement.addEventListener('click', this.handleClick.bind(this), false);
-    }
-    
-    StormComponentBoilerplate.prototype.handleClick = function(e) {
-        console.log(e.target, 'I\'ve been clicked');
-    };
-    
+        StormComponentPrototype = {
+            init: function() {
+                this.DOMElement.addEventListener('click', this.handleClick.bind(this), false);
+            },
+            handleClick: function(e) {
+                console.log(e.target, 'I\'ve been clicked');
+            }
+        };
     
     function init(sel, opts) {
         var els = [].slice.call(document.querySelectorAll(sel));
@@ -40,8 +37,13 @@
             throw new Error('Boilerplate cannot be initialised, no augmentable elements found');
         }
         
-        els.forEach(function(el){
-            instances.push(new StormComponentBoilerplate(el, opts));
+        els.forEach(function(el, i){
+            instances[i] = assign(Object.create(StormComponentPrototype), {
+                DOMElement: el,
+                settings: merge({}, defaults, opts)
+            });
+            //add further objects as assign arguments for object composition
+            instances[i].init();
         });
         return instances;
     }
@@ -54,7 +56,7 @@
     function destroy() {
         instances = [];  
     }
-	
+    
 	return {
 		init: init,
         reload: reload,
