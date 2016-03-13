@@ -10,8 +10,6 @@
 	'use strict';
     
     var instances = [],
-        assign = require('object-assign'),
-        merge = require('merge'),
         defaults = {
             delay: 200,
             callback: null
@@ -33,9 +31,9 @@
         }
         
         els.forEach(function(el, i){
-            instances[i] = assign(Object.create(StormComponentPrototype), {
+            instances[i] = STORM.UTILS.assign(Object.create(StormComponentPrototype), {
                 DOMElement: el,
-                settings: merge({}, defaults, opts)
+                settings: STORM.UTILS.merge({}, defaults, opts)
             });
             //add further objects as assign arguments for object composition
             instances[i].init();

@@ -1,6 +1,6 @@
 /**
  * @name storm-component-boilerplate: 
- * @version 0.1.0: Sat, 27 Feb 2016 21:42:15 GMT
+ * @version 0.1.0: Sun, 13 Mar 2016 16:50:52 GMT
  * @author stormid
  * @license MIT
  */(function(root, factory) {
@@ -15,8 +15,6 @@
 	'use strict';
     
     var instances = [],
-        assign = require('object-assign'),
-        merge = require('merge'),
         defaults = {
             delay: 200,
             callback: null
@@ -38,9 +36,9 @@
         }
         
         els.forEach(function(el, i){
-            instances[i] = assign(Object.create(StormComponentPrototype), {
+            instances[i] = STORM.UTILS.assign(Object.create(StormComponentPrototype), {
                 DOMElement: el,
-                settings: merge({}, defaults, opts)
+                settings: STORM.UTILS.merge({}, defaults, opts)
             });
             //add further objects as assign arguments for object composition
             instances[i].init();
