@@ -1,6 +1,6 @@
 {
   "name": "storm-component-boilerplate",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
   "author": "stormid",
   "license": "MIT",
@@ -32,6 +32,5 @@
     "boilerplate",
     "component"
   ],
-  "dependencies": {
-  }
+  "dependencies": {}
 }
