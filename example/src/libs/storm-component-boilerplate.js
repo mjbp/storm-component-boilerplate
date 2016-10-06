@@ -1,6 +1,6 @@
 /**
  * @name storm-component-boilerplate: 
- * @version 0.1.0: Sun, 13 Mar 2016 16:50:38 GMT
+ * @version 0.1.1: Thu, 26 May 2016 08:15:49 GMT
  * @author stormid
  * @license MIT
  */(function(root, factory) {
@@ -21,6 +21,9 @@
         },
         StormComponentPrototype = {
             init: function() {
+                global.STORM.UTILS.attributelist.set(this.DOMElement, {
+                    'aria-hidden': false
+                });
                 this.DOMElement.addEventListener('click', this.handleClick.bind(this), false);
             },
             handleClick: function(e) {
@@ -36,9 +39,9 @@
         }
         
         els.forEach(function(el, i){
-            instances[i] = STORM.UTILS.assign(Object.create(StormComponentPrototype), {
+            instances[i] = Object.assign(Object.create(StormComponentPrototype), {
                 DOMElement: el,
-                settings: STORM.UTILS.merge({}, defaults, opts)
+                settings: Object.assign({}, defaults, opts)
             });
             //add further objects as assign arguments for object composition
             instances[i].init();
