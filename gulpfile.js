@@ -1,17 +1,23 @@
 /*global require*/
 /* Require the gulp and node packages */
+
 var gulp = require('gulp'),
+    plumber = require('gulp-plumber'),
     pkg = require('./package.json'),
     header = require('gulp-header'),
+    wrap = require('gulp-wrap-umd'),
     notify = require('gulp-notify'),
     uglify = require('gulp-uglify'),
     rename = require('gulp-rename'),
-    browserify = require('gulp-browserify'),
+    babel = require('gulp-babel'),
+    browserify = require('browserify'),
+    source = require('vinyl-source-stream'),
+    buffer = require('vinyl-buffer'),
+    babelify = require( 'babelify'),
     browserSync = require('browser-sync'),
     ghPages = require('gulp-gh-pages'),
-    reload = browserSync.reload,
-    runSequence = require('run-sequence');
-
+    runSequence = require('run-sequence'),
+    reload = browserSync.reload;
 
 /* Set up the banner */
 var banner = [
@@ -20,8 +26,25 @@ var banner = [
     ' * @version <%= pkg.version %>: <%= new Date().toUTCString() %>',
     ' * @author <%= pkg.author %>',
     ' * @license <%= pkg.license %>',
-    ' */'
+    ' */\n'
 ].join('\n');
+
+var umdTemplate = ["(function(root, factory) {",
+                    "   var mod = {",
+                    "       exports: {}",
+                    "   };",
+                    "   if (typeof exports !== 'undefined'){",
+                    "       mod.exports = exports",
+                    "       factory(mod.exports)",
+                    "       module.exports = mod.exports.default",
+                    "   } else {",
+                    "       factory(mod.exports);",
+                    "       root.<%= namespace %> = mod.exports.default",
+                    "   }\n",
+                    "}(this, function(exports) {",
+                    "   <%= contents %>;",
+                    "}));\n"
+                    ].join('\n');
 
 /* Error notificaton*/
 var onError = function(err) {
@@ -35,49 +58,72 @@ var onError = function(err) {
     this.emit('end');
 };
 
+var componentName = function(){
+	return pkg.name.split('-').map(function(w){ return w.substr(0, 1).toUpperCase() + w.substr(1); }).join('');
+};
+
 /************************
  *  Task definitions 
  ************************/
-gulp.task('js', function() {
+gulp.task('js:es5', function() {
     return gulp.src('src/*.js')
+        .pipe(plumber({errorHandler: onError}))
+        .pipe(babel({
+			presets: ['es2015']
+		}))
+        .pipe(wrap({
+            namespace: componentName(),
+            template: umdTemplate
+        }))
+        .pipe(header(banner, {pkg : pkg}))
+  		.pipe(rename({suffix: '.standalone'}))
+		.pipe(gulp.dest('dist/'));
+});
+
+gulp.task('js:es6', function() {
+    return gulp.src('src/*.js')
+        .pipe(plumber({errorHandler: onError}))
         .pipe(header(banner, {pkg : pkg}))
 		.pipe(gulp.dest('dist/'));
 });
 
-gulp.task('compress', ['js'], function() {
-    return gulp.src('src/*.js')
-		.pipe(header(banner, {pkg : pkg}))
-		.pipe(uglify())
-  		.pipe(rename({suffix: '.min'}))
-		.pipe(gulp.dest('dist/'));
-});
+gulp.task('js', ['js:es6', 'js:es5']);
 
 gulp.task('copy', function() {
-    return gulp.src('dist/*.js')
-		.pipe(gulp.dest('example/src/libs/'));
+    return gulp.src('./dist/*.js')
+		.pipe(gulp.dest('./example/src/libs/'));
 });
 
-gulp.task('example', function() {
-    return gulp.src('example/src/app.js')
-		.pipe(browserify({
-          insertGlobals : true,
-          debug : true
-        }))
-		.pipe(gulp.dest('example/js'));
+gulp.task('example:import', function(){
+    return browserify({
+            entries: './example/src/app.js',
+            debug: true
+        })
+        .transform(babelify, {presets: ['es2015']})
+        .bundle()
+        .pipe(source('app.js'))
+        .pipe(buffer())
+        .pipe(gulp.dest('./example/js'));
 });
+gulp.task('example:async', function(){
+    return gulp.src('./dist/*.js')
+		.pipe(gulp.dest('./example/js/'));
+});
+gulp.task('example', ['example:import', 'example:async']);
 
-gulp.task('server', ['js', 'copy', 'example'], function () {
-      browserSync({
+
+gulp.task('server', ['js', 'copy', 'example'], function() {
+    browserSync({
         notify: false,
         // https: true,
         server: ['example'],
         tunnel: false
-      });
+    });
 
-      gulp.watch(['src/*'], function(){
-          runSequence('js', 'copy', 'example', 'compress', reload);
-      });
-      gulp.watch(['example/**/*'], ['example', reload]);
+    gulp.watch(['src/*'], function() {
+        runSequence('js', 'copy', 'example', reload);
+    });
+    gulp.watch(['example/**/*'], ['example', reload]);
 });
  
 gulp.task('deploy', ['example'], function() {
