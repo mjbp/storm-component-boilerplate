@@ -17,6 +17,13 @@
     "boilerplate",
     "component"
   ],
+  "scripts": {
+    "build": "babel src --out-dir lib",
+    "build:umd": "webpack src/index.js dist/library-boilerplate.js && NODE_ENV=production webpack src/index.js dist/library-boilerplate.min.js",
+    "lint": "eslint src test examples",
+    "test": "NODE_ENV=test mocha",
+    "test:watch": "NODE_ENV=test mocha --watch"
+  },
   "dependencies": {
     "babel": "^6.5.2",
     "babel-core": "^6.7.2",
@@ -25,6 +32,7 @@
     "babelify": "^7.3.0",
     "browser-sync": "^2.11.1",
     "browserify": "^13.1.0",
+    "expect": "^1.20.2",
     "gulp": "^3.9.0",
     "gulp-babel": "^6.1.2",
     "gulp-gh-pages": "^0.5.4",
@@ -34,7 +42,9 @@
     "gulp-rename": "^1.2.2",
     "gulp-uglify": "^1.4.2",
     "gulp-wrap-umd": "^0.2.1",
+    "mocha": "^3.1.2",
     "object-assign": "^4.0.1",
-    "run-sequence": "^1.1.0"
+    "run-sequence": "^1.1.0",
+    "vinyl-source-stream": "^1.1.0"
   }
 }
