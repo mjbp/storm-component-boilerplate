@@ -29,6 +29,7 @@ var banner = [
     ' */\n'
 ].join('\n');
 
+/* Wrapper to support es5 window and commonjs with same syntax */ 
 var umdTemplate = ["(function(root, factory) {",
                     "   var mod = {",
                     "       exports: {}",

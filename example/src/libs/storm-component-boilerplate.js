@@ -21,13 +21,13 @@ const StormComponentPrototype = {
     };
 
 const init = (sel, opts) => {
+    //Array.from(arr, fn)?
     let els = [].slice.call(document.querySelectorAll(sel));
     
     if(!els.length) {
         throw new Error('Boilerplate cannot be initialised, no augmentable elements found');
     }
     
-    //Array.from(arr, fn)?
     els.forEach((el, i) => {
         instances[i] = Object.assign(Object.create(StormComponentPrototype), {
             DOMElement: el,
@@ -47,10 +47,12 @@ const reload = (els, opts) =>  {
 const destroy = () => {
     instances = [];  
 }
-
-//export default { init }
+export default { init }
+/*
+//
 const StormComponentBoilerplate = {init};
 
 export default StormComponentBoilerplate;
 
 
+*/
