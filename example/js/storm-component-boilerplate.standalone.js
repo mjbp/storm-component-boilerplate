@@ -1,6 +1,6 @@
 /**
  * @name storm-component-boilerplate: 
- * @version 0.1.0: Fri, 14 Oct 2016 16:44:32 GMT
+ * @version 0.1.0: Mon, 17 Oct 2016 17:29:58 GMT
  * @author stormid
  * @license MIT
  */
@@ -33,20 +33,22 @@ var defaults = {
 var StormComponentPrototype = {
     init: function init() {
         this.DOMElement.addEventListener('click', this.handleClick.bind(this), false);
+
+        return this;
     },
-    handleClick: function handleClick(e) {
-        console.log(e.target, 'I\'ve been clicked');
+    handleClick: function handleClick() {
+        this.DOMElement.classList.toggle('clicked');
     }
 };
 
 var init = function init(sel, opts) {
     var els = [].slice.call(document.querySelectorAll(sel));
+    //let els = Array.from(document.querySelectorAll(sel));
 
     if (!els.length) {
         throw new Error('Boilerplate cannot be initialised, no augmentable elements found');
     }
 
-    //Array.from(arr, fn)?
     els.forEach(function (el, i) {
         instances[i] = Object.assign(Object.create(StormComponentPrototype), {
             DOMElement: el,
@@ -58,17 +60,5 @@ var init = function init(sel, opts) {
     return instances;
 };
 
-var reload = function reload(els, opts) {
-    destroy();
-    init(els, opts);
-};
-
-var destroy = function destroy() {
-    instances = [];
-};
-
-//export default { init }
-var StormComponentBoilerplate = { init: init };
-
-exports.default = StormComponentBoilerplate;;
+exports.default = { init: init };;
 }));
