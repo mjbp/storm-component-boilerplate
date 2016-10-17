@@ -12,6 +12,7 @@ describe('Initialisation', () => {
 
   let components = Boilerplate.init('.js-boilerplate');
 
+
   it('should return array of length 2', () => {
     should(components)
       .Array()
@@ -36,6 +37,11 @@ describe('Initialisation', () => {
     Array.from(components[0].DOMElement.classList).should.not.containEql('clicked');
   });
 
+
+  it('should throw an error if no elements are found', () => {
+    Boilerplate.init.bind(Boilerplate, '.js-err').should.throw();
+  })
+
   //this test fails but works in browser? settings object passed by reference
   /*
   it('should initialisation with different settings if differnt options are passed', () => {
@@ -52,6 +58,8 @@ describe('Initialisation', () => {
   });
   */
 
+  
+
 });
 
 describe('Component API', () => {
@@ -67,11 +75,5 @@ describe('Component API', () => {
     Array.from(components[0].DOMElement.classList).should.not.containEql('clicked');
 
    });
-
-  it('should destroy all instances', () => {
-    console.log(components);
-    components = [];
-    console.log(components);
-  });
 
 });

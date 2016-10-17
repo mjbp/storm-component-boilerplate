@@ -21,7 +21,7 @@
     "build": "babel src --out-dir lib",
     "build:umd": "webpack src/index.js dist/library-boilerplate.js && NODE_ENV=production webpack src/index.js dist/library-boilerplate.min.js",
     "lint": "eslint src test examples",
-    "test": "NODE_ENV=test mocha",
+    "test": "istanbul cover _mocha",
     "test:watch": "NODE_ENV=test mocha --watch"
   },
   "dependencies": {
@@ -41,6 +41,7 @@
     "gulp-rename": "^1.2.2",
     "gulp-uglify": "^1.4.2",
     "gulp-wrap-umd": "^0.2.1",
+    "istanbul": "^1.0.0-alpha.2",
     "jsdom": "^9.8.0",
     "jsdom-global": "^2.1.0",
     "mocha": "^3.1.2",
