@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/mjbp/storm-component-boilerplate.svg?branch=master)](https://travis-ci.org/mjbp/storm-component-boilerplate)
 [![codecov.io](http://codecov.io/github/mjbp/storm-component-boilerplate/coverage.svg?branch=master)](http://codecov.io/github/mjbp/storm-component-boilerplate?branch=master)
+[![npm version](https://badge.fury.io/js/storm-component-boilerplate.svg)](https://badge.fury.io/js/storm-component-boilerplate)
 
 One line summary
 
@@ -10,11 +11,13 @@ HTML
 ```
 <div class="js-boilerplate"></div>
 
+```
 
 JS
 ```
 npm i -S storm-component-boilerplate
 
+```
 
 ###es6 import
 ```
@@ -22,6 +25,7 @@ import Boilerplate from 'storm-component-boilerplate';
 
 Boilerplate.init('.js-selector');
 
+```
 
 ####Asynchronous browser loading
 ```
@@ -32,6 +36,7 @@ Load('/content/js/async/storm-component-boilerplate.js')
         StormComponentBoilerplate.init('.js-component-boilerplate');
     });
 
+```
 
 ###es5 commonjs
 ```
@@ -39,6 +44,7 @@ var Boilerplate = require('storm-component-boilerplate');
 
 Boilerplate.init('.js-selector');
 
+```
 
 ###Options
 ```
@@ -46,6 +52,7 @@ Boilerplate.init('.js-selector');
         delay: 200,
         callback: null
     }
+```
 
 e.g.
 ```
@@ -54,12 +61,12 @@ Boilerplate.init('.js-selector', {
         console.log(this);
     }
 });
-
+```
 
 ##Tests
 ```
 npm run test
-
+```
 
 ##License
 MIT
