@@ -1,6 +1,6 @@
 /**
  * @name storm-component-boilerplate: 
- * @version 0.1.0: Mon, 17 Oct 2016 17:29:58 GMT
+ * @version 0.1.0: Tue, 18 Oct 2016 11:09:32 GMT
  * @author stormid
  * @license MIT
  */
@@ -23,8 +23,6 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-var instances = [];
-
 var defaults = {
     delay: 200,
     callback: null
@@ -38,6 +36,7 @@ var StormComponentPrototype = {
     },
     handleClick: function handleClick() {
         this.DOMElement.classList.toggle('clicked');
+        !!(this.settings.callback && this.settings.callback.constructor && this.settings.callback.call && this.settings.callback.apply) && this.settings.callback.call(this);
     }
 };
 
@@ -49,15 +48,12 @@ var init = function init(sel, opts) {
         throw new Error('Boilerplate cannot be initialised, no augmentable elements found');
     }
 
-    els.forEach(function (el, i) {
-        instances[i] = Object.assign(Object.create(StormComponentPrototype), {
+    return els.map(function (el, i) {
+        return Object.assign(Object.create(StormComponentPrototype), {
             DOMElement: el,
             settings: Object.assign({}, defaults, opts)
-        });
-        //add further objects as assign arguments for object composition
-        instances[i].init();
+        }).init();
     });
-    return instances;
 };
 
 exports.default = { init: init };;

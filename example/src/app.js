@@ -1,13 +1,13 @@
 import Boilerplate from './libs/storm-component-boilerplate';
 
-const onDOMContentLoadedTasks = [() => { 
+const onDOMContentLoadedTasks = [() => {
     Boilerplate.init('.js-boilerplate');
-
 }];
     
 if('addEventListener' in window) window.addEventListener('DOMContentLoaded', () => { onDOMContentLoadedTasks.forEach((fn) => fn()); });
 
 /*
+es5 version
 var UI = (function(w, d) {
 		'use strict';
 
@@ -19,6 +19,7 @@ var UI = (function(w, d) {
                 s.parentNode.insertBefore(t, s);
                 t.onload = cb;
             },
+            //async version
             //Boilerplate = require('./libs/storm-component-boilerplate.standalone.js'),
 			init = function() {
                 LoadScript('./js/storm-component-boilerplate.standalone.js', function(){

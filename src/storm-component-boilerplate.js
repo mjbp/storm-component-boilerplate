@@ -1,5 +1,3 @@
-let instances = [];
-
 const defaults = {
         delay: 200,
         callback: null
@@ -13,6 +11,7 @@ const StormComponentPrototype = {
         },
         handleClick() {
             this.DOMElement.classList.toggle('clicked');
+            !!(this.settings.callback && this.settings.callback.constructor && this.settings.callback.call && this.settings.callback.apply) && this.settings.callback.call(this);
         }
     };
 
@@ -24,15 +23,12 @@ const init = (sel, opts) => {
         throw new Error('Boilerplate cannot be initialised, no augmentable elements found');
     }
     
-    els.forEach((el, i) => {
-        instances[i] = Object.assign(Object.create(StormComponentPrototype), {
+    return els.map((el, i) => {
+        return Object.assign(Object.create(StormComponentPrototype), {
             DOMElement: el,
             settings: Object.assign({}, defaults, opts)
-        });
-        //add further objects as assign arguments for object composition
-        instances[i].init();
+        }).init();
     });
-    return instances;
 }
 
 export default { init }

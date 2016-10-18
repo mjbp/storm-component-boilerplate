@@ -18,9 +18,8 @@
     "component"
   ],
   "scripts": {
-    "build": "babel src --out-dir lib",
-    "build:umd": "webpack src/index.js dist/library-boilerplate.js && NODE_ENV=production webpack src/index.js dist/library-boilerplate.min.js",
-    "lint": "eslint src test examples",
+    "build": "gulp build",
+    "start": "gulp",
     "test": "istanbul cover _mocha",
     "test:watch": "NODE_ENV=test mocha --watch"
   },

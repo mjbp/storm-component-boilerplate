@@ -4,3 +4,4 @@ src
 test
 example
 coverage
+.coveralls.yml

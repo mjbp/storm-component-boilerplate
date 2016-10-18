@@ -138,3 +138,6 @@ gulp.task('deploy', ['example'], function() {
  ************************/
 gulp.task('default', ['server']);
 gulp.task('serve', ['server']);
+gulp.task('build', function() {
+    runSequence('js', 'copy', 'example');
+});
