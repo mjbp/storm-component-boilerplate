@@ -31,6 +31,7 @@
     "babelify": "^7.3.0",
     "browser-sync": "^2.11.1",
     "browserify": "^13.1.0",
+    "codecov": "^1.0.1",
     "gulp": "^3.9.0",
     "gulp-babel": "^6.1.2",
     "gulp-gh-pages": "^0.5.4",
