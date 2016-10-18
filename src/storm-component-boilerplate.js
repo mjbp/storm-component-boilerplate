@@ -1,62 +1,34 @@
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    define([], factory);
-  } else if (typeof exports === 'object') {
-    module.exports = factory();
-  } else {
-    root.StormComponentBoilerplate = factory();
-  }
-}(this, function() {
-	'use strict';
-    
-    var instances = [],
-        defaults = {
-            delay: 200,
-            callback: null
+const defaults = {
+        delay: 200,
+        callback: null
+    };
+
+const StormComponentPrototype = {
+        init() {
+            this.DOMElement.addEventListener('click', this.handleClick.bind(this), false);
+
+            return this;
         },
-        StormComponentPrototype = {
-            init: function() {
-                global.STORM.UTILS.attributelist.set(this.DOMElement, {
-                    'aria-hidden': false
-                });
-                this.DOMElement.addEventListener('click', this.handleClick.bind(this), false);
-            },
-            handleClick: function(e) {
-                console.log(e.target, 'I\'ve been clicked');
-            }
-        };
-    
-    function init(sel, opts) {
-        var els = [].slice.call(document.querySelectorAll(sel));
-        
-        if(els.length === 0) {
-            throw new Error('Boilerplate cannot be initialised, no augmentable elements found');
+        handleClick() {
+            this.DOMElement.classList.toggle('clicked');
+            !!(this.settings.callback && this.settings.callback.constructor && this.settings.callback.call && this.settings.callback.apply) && this.settings.callback.call(this);
         }
-        
-        els.forEach(function(el, i){
-            instances[i] = Object.assign(Object.create(StormComponentPrototype), {
-                DOMElement: el,
-                settings: Object.assign({}, defaults, opts)
-            });
-            //add further objects as assign arguments for object composition
-            instances[i].init();
-        });
-        return instances;
+    };
+
+const init = (sel, opts) => {
+    let els = [].slice.call(document.querySelectorAll(sel));
+    //let els = Array.from(document.querySelectorAll(sel));
+
+    if(!els.length) {
+        throw new Error('Boilerplate cannot be initialised, no augmentable elements found');
     }
     
-    function reload(els, opts) {
-        destroy();
-        init(els, opts);
-    }
-    
-    function destroy() {
-        instances = [];  
-    }
-    
-	return {
-		init: init,
-        reload: reload,
-        destroy: destroy
-	};
-	
- }));
+    return els.map((el, i) => {
+        return Object.assign(Object.create(StormComponentPrototype), {
+            DOMElement: el,
+            settings: Object.assign({}, defaults, opts)
+        }).init();
+    });
+}
+
+export default { init }
