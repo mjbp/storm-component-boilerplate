@@ -10,24 +10,19 @@ One line summary
 HTML
 ```
 <div class="js-boilerplate"></div>
-
 ```
 
 JS
 ```
 npm i -S storm-component-boilerplate
-
 ```
-
-###es6 import
+either using es6 import
 ```
 import Boilerplate from 'storm-component-boilerplate';
 
 Boilerplate.init('.js-selector');
-
 ```
-
-####Asynchronous browser loading
+aynchronous browser loading
 ```
 import Load from 'storm-script-loader.js';
 
@@ -35,18 +30,15 @@ Load('/content/js/async/storm-component-boilerplate.js')
     .then(() => {
         StormComponentBoilerplate.init('.js-component-boilerplate');
     });
-
 ```
-
-###es5 commonjs
+or es5 commonjs
 ```
 var Boilerplate = require('storm-component-boilerplate');
 
 Boilerplate.init('.js-selector');
-
 ```
 
-###Options
+##Options
 ```
     {
         delay: 200,
