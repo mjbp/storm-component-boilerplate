@@ -55,8 +55,8 @@ Boilerplate.init('.js-selector', {
 });
 ```
 
-##API#### 
-`Boilerplate.init(selector, opts)`
+##API
+####`Boilerplate.init(selector, opts)`
 Initialise the module with a DOM selector and  options object
 
 
