@@ -4,7 +4,9 @@ It includes an opinionated JS component boilerplate, build system, test integrat
 
 Before use make sure to grep for “storm-component-boilerplate” and replace every occurrence as well as updating your tests, readme and example.
 
+
 ---
+
 
 #Component Name
 
@@ -13,6 +15,7 @@ Before use make sure to grep for “storm-component-boilerplate” and replace e
 [![npm version](https://badge.fury.io/js/storm-component-boilerplate.svg)](https://badge.fury.io/js/storm-component-boilerplate)
 
 One line summary
+
 
 ##Usage
 HTML
@@ -46,8 +49,10 @@ var Boilerplate = require('storm-component-boilerplate');
 Boilerplate.init('.js-selector');
 ```
 
+
 ##Example
 [https://mjbp.github.io/storm-component-boilerplate](https://mjbp.github.io/storm-component-boilerplate)
+
 
 ##Options
 ```
@@ -65,6 +70,7 @@ Boilerplate.init('.js-selector', {
     }
 });
 ```
+
 
 ##API
 ####`Boilerplate.init(selector, opts)`
