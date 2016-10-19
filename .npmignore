@@ -4,4 +4,4 @@ src
 test
 example
 coverage
-.coveralls.yml
+node_modules
