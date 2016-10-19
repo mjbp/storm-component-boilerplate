@@ -31,7 +31,7 @@ Load('/content/js/async/storm-component-boilerplate.js')
         StormComponentBoilerplate.init('.js-component-boilerplate');
     });
 ```
-or es5 commonjs
+or es5 commonjs (legacy)
 ```
 var Boilerplate = require('storm-component-boilerplate');
 
@@ -54,6 +54,15 @@ Boilerplate.init('.js-selector', {
     }
 });
 ```
+
+##API#### 
+`Boilerplate.init(selector, opts)`
+Initialise the module with a DOM selector and  options object
+
+
+`Boilerplate.handleClick()`
+Trigger click event handler
+
 
 ##Tests
 ```
