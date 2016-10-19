@@ -1,3 +1,11 @@
+This is a **boilerplate for developing UI components** by **StormId**, used in production in conjunction with our project scaffold.
+
+It includes an opinionated JS component boilerplate, build system, test integration, example, README (see below), and deployment, using nodeJS, npm, gulp, mocha, shouldjs, instanbul, babel, travis ci, and codecov.
+
+Before use make sure to grep for “storm-component-boilerplate” and replace every occurrence as well as updating your tests, readme and example.
+
+---
+
 #Component Name
 
 [![Build Status](https://travis-ci.org/mjbp/storm-component-boilerplate.svg?branch=master)](https://travis-ci.org/mjbp/storm-component-boilerplate)
@@ -38,6 +46,9 @@ var Boilerplate = require('storm-component-boilerplate');
 Boilerplate.init('.js-selector');
 ```
 
+##Example
+[https://mjbp.github.io/storm-component-boilerplate](https://mjbp.github.io/storm-component-boilerplate)
+
 ##Options
 ```
     {
@@ -60,7 +71,7 @@ Boilerplate.init('.js-selector', {
 Initialise the module with a DOM selector and  options object
 
 
-`Boilerplate.handleClick()`
+####`Boilerplate.handleClick()`
 Trigger click event handler
 
 
