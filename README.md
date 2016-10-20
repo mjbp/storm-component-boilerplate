@@ -35,7 +35,7 @@ Boilerplate.init('.js-selector');
 ```
 aynchronous browser loading (use the .standalone version in the /dist folder)
 ```
-import Load from 'storm-script-loader.js';
+import Load from 'storm-load';
 
 Load('/content/js/async/storm-component-boilerplate.standalone.js')
     .then(() => {

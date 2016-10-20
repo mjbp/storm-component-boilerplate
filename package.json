@@ -6,12 +6,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mjbp/storm-boilerplate.git"
+    "url": "https://github.com/mjbp/storm-component-boilerplate.git"
   },
   "bugs": {
     "url": "https://github.com/mjbp/storm-component-boilerplate/issues"
   },
-  "main": "dist/storm-component-boilerplate.min.js",
+  "main": "dist/storm-component-boilerplate.js",
   "keywords": [
     "stormid",
     "boilerplate",
