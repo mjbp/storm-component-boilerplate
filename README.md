@@ -87,7 +87,9 @@ npm run test
 ```
 
 ##Browser support
-This module uses Object.assign, element.classList, and Promises so any evergreen browser without ployfills. ie9+ with polyfills (or ie8+ with even more polyfils for Array functions and eventListeners).
+This is module has both es6 and es5 distributions. The es6 version should be used in a workflow that transpiles.
+
+The es5 version depends unpon Object.assign, element.classList, and Promises so all evergreen browsers are supported out of the box, ie9+ is supported with polyfills. ie8+ will work with even more polyfils for Array functions and eventListeners.
 
 ##Dependencies
 None
