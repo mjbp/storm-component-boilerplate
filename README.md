@@ -33,18 +33,18 @@ import Boilerplate from 'storm-component-boilerplate';
 
 Boilerplate.init('.js-selector');
 ```
-aynchronous browser loading
+aynchronous browser loading (use the .standalone version in the /dist folder)
 ```
 import Load from 'storm-script-loader.js';
 
-Load('/content/js/async/storm-component-boilerplate.js')
+Load('/content/js/async/storm-component-boilerplate.standalone.js')
     .then(() => {
         StormComponentBoilerplate.init('.js-component-boilerplate');
     });
 ```
-or es5 commonjs (legacy)
+or es5 commonjs  (legacy, use the .standalone version in the /dist folder)
 ```
-var Boilerplate = require('storm-component-boilerplate');
+var Boilerplate = require('./libs/storm-component-boilerplate');
 
 Boilerplate.init('.js-selector');
 ```
@@ -85,6 +85,12 @@ Trigger click event handler
 ```
 npm run test
 ```
+
+##Browser support
+This module uses Object.assign, element.classList, and Promises so any evergreen browser without ployfills. ie9+ with polyfills (or ie8+ with even more polyfils for Array functions and eventListeners).
+
+##Dependencies
+None
 
 ##License
 MIT
