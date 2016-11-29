@@ -1,6 +1,6 @@
 {
   "name": "storm-component-boilerplate",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "",
   "author": "stormid",
   "license": "MIT",
@@ -24,7 +24,16 @@
     "test:watch": "NODE_ENV=test mocha --watch"
   },
   "browserify": {
-    "transform": [["babelify", { "presets": ["es2015"] }]]
+    "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            "es2015"
+          ]
+        }
+      ]
+    ]
   },
   "devDependencies": {
     "babel": "^6.5.2",
