@@ -1,6 +1,6 @@
 /**
  * @name storm-component-boilerplate: 
- * @version 0.2.4: Tue, 08 Nov 2016 16:58:30 GMT
+ * @version 0.2.7: Thu, 15 Dec 2016 17:43:09 GMT
  * @author stormid
  * @license MIT
  */
