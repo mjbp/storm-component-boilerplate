@@ -1,40 +1,37 @@
 /**
  * @name storm-component-boilerplate: 
- * @version 0.2.0: Wed, 19 Oct 2016 14:26:46 GMT
+ * @version 0.2.7: Fri, 16 Dec 2016 09:13:45 GMT
  * @author stormid
  * @license MIT
  */
 const defaults = {
-        delay: 200,
-        callback: null
-    };
+	delay: 200,
+	callback: null
+};
 
 const StormComponentPrototype = {
-        init() {
-            this.DOMElement.addEventListener('click', this.handleClick.bind(this), false);
-
-            return this;
-        },
-        handleClick() {
-            this.DOMElement.classList.toggle('clicked');
-            !!(this.settings.callback && this.settings.callback.constructor && this.settings.callback.call && this.settings.callback.apply) && this.settings.callback.call(this);
-        }
-    };
+	init() {
+		this.DOMElement.addEventListener('click', this.handleClick.bind(this), false);
+		return this;
+	},
+	handleClick() {
+		this.DOMElement.classList.toggle('clicked');
+		!!(this.settings.callback && this.settings.callback.constructor && this.settings.callback.call && this.settings.callback.apply) && this.settings.callback.call(this);
+	}
+};
 
 const init = (sel, opts) => {
-    let els = [].slice.call(document.querySelectorAll(sel));
+	let els = [].slice.call(document.querySelectorAll(sel));
     //let els = Array.from(document.querySelectorAll(sel));
 
-    if(!els.length) {
-        throw new Error('Boilerplate cannot be initialised, no augmentable elements found');
-    }
+	if(!els.length) throw new Error('Boilerplate cannot be initialised, no augmentable elements found');
     
-    return els.map((el, i) => {
-        return Object.assign(Object.create(StormComponentPrototype), {
-            DOMElement: el,
-            settings: Object.assign({}, defaults, opts)
-        }).init();
-    });
-}
+	return els.map((el) => {
+		return Object.assign(Object.create(StormComponentPrototype), {
+			DOMElement: el,
+			settings: Object.assign({}, defaults, opts)
+		}).init();
+	});
+};
 
-export default { init }
+export default { init };

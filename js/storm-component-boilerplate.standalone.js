@@ -1,6 +1,6 @@
 /**
  * @name storm-component-boilerplate: 
- * @version 0.2.0: Wed, 19 Oct 2016 14:26:46 GMT
+ * @version 0.2.7: Fri, 16 Dec 2016 09:13:45 GMT
  * @author stormid
  * @license MIT
  */
@@ -21,39 +21,36 @@
    'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+	value: true
 });
 var defaults = {
-    delay: 200,
-    callback: null
+	delay: 200,
+	callback: null
 };
 
 var StormComponentPrototype = {
-    init: function init() {
-        this.DOMElement.addEventListener('click', this.handleClick.bind(this), false);
-
-        return this;
-    },
-    handleClick: function handleClick() {
-        this.DOMElement.classList.toggle('clicked');
-        !!(this.settings.callback && this.settings.callback.constructor && this.settings.callback.call && this.settings.callback.apply) && this.settings.callback.call(this);
-    }
+	init: function init() {
+		this.DOMElement.addEventListener('click', this.handleClick.bind(this), false);
+		return this;
+	},
+	handleClick: function handleClick() {
+		this.DOMElement.classList.toggle('clicked');
+		!!(this.settings.callback && this.settings.callback.constructor && this.settings.callback.call && this.settings.callback.apply) && this.settings.callback.call(this);
+	}
 };
 
 var init = function init(sel, opts) {
-    var els = [].slice.call(document.querySelectorAll(sel));
-    //let els = Array.from(document.querySelectorAll(sel));
+	var els = [].slice.call(document.querySelectorAll(sel));
+	//let els = Array.from(document.querySelectorAll(sel));
 
-    if (!els.length) {
-        throw new Error('Boilerplate cannot be initialised, no augmentable elements found');
-    }
+	if (!els.length) throw new Error('Boilerplate cannot be initialised, no augmentable elements found');
 
-    return els.map(function (el, i) {
-        return Object.assign(Object.create(StormComponentPrototype), {
-            DOMElement: el,
-            settings: Object.assign({}, defaults, opts)
-        }).init();
-    });
+	return els.map(function (el) {
+		return Object.assign(Object.create(StormComponentPrototype), {
+			DOMElement: el,
+			settings: Object.assign({}, defaults, opts)
+		}).init();
+	});
 };
 
 exports.default = { init: init };;
