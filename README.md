@@ -16,6 +16,9 @@ Before use make sure to grep for “storm-component-boilerplate” and replace e
 
 One line summary
 
+##Example
+[https://mjbp.github.io/storm-component-boilerplate](https://mjbp.github.io/storm-component-boilerplate)
+
 
 ##Usage
 HTML
@@ -42,17 +45,6 @@ Load('/content/js/async/storm-component-boilerplate.standalone.js')
         StormComponentBoilerplate.init('.js-component-boilerplate');
     });
 ```
-or es5 commonjs  (legacy, use the .standalone version in the /dist folder)
-```
-var Boilerplate = require('./libs/storm-component-boilerplate');
-
-Boilerplate.init('.js-selector');
-```
-
-
-##Example
-[https://mjbp.github.io/storm-component-boilerplate](https://mjbp.github.io/storm-component-boilerplate)
-
 
 ##Options
 ```
@@ -70,16 +62,6 @@ Boilerplate.init('.js-selector', {
     }
 });
 ```
-
-
-##API
-####`Boilerplate.init(selector, opts)`
-Initialise the module with a DOM selector and  options object
-
-
-####`Boilerplate.handleClick()`
-Trigger click event handler
-
 
 ##Tests
 ```

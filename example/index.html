@@ -57,6 +57,7 @@
             overflow:hidden;
             margin:0 auto;
             width:80%;
+            max-width:1200px;
         }
         .row {
             margin-left:-30px;
@@ -99,8 +100,8 @@
             
 Boilerplate.init('.js-selector');</code></pre>
         <p>Or async using storm-load.js, add the .standalone file to your project, then intiialise using the global name:</p>
-        <pre><code class="language-js">Load('/content/js/async/storm-component-boilerplate.js').then(() => {
-    StormComponentBoilerplate.init('.js-tabs');
+        <pre><code class="language-js">Load('/content/js/async/storm-component-boilerplate.standalone.js').then(() => {
+    StormComponentBoilerplate.init('.js-selector');
 });</code></pre>
     </div>
     <script src="./js/app.js"></script>
