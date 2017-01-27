@@ -1,6 +1,3 @@
-/*global require*/
-/* Require the gulp and node packages */
-
 var gulp = require('gulp'),
     plumber = require('gulp-plumber'),
     pkg = require('./package.json'),
@@ -152,7 +149,7 @@ gulp.task('deploy', ['example'], function() {
 
 
 /************************
- *  Task collection API
+ *  Task API
  ************************/
 gulp.task('default', ['server']);
 gulp.task('serve', ['server']);
