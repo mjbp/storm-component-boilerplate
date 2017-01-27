@@ -34,13 +34,13 @@ either using es6 import
 ```
 import Boilerplate from 'storm-component-boilerplate';
 
-Boilerplate.init('.js-selector');
+Boilerplate.init('.js-boilerplate');
 ```
 aynchronous browser loading (use the .standalone version in the /dist folder)
 ```
 import Load from 'storm-load';
 
-Load('/content/js/async/storm-component-boilerplate.standalone.js')
+Load('{{path}}/storm-component-boilerplate.standalone.js')
     .then(() => {
         StormComponentBoilerplate.init('.js-component-boilerplate');
     });
@@ -48,10 +48,10 @@ Load('/content/js/async/storm-component-boilerplate.standalone.js')
 
 ##Options
 ```
-    {
-        delay: 200,
-        callback: null
-    }
+{
+    delay: 200,
+    callback: null
+}
 ```
 
 e.g.
@@ -71,7 +71,7 @@ npm run test
 ##Browser support
 This is module has both es6 and es5 distributions. The es6 version should be used in a workflow that transpiles.
 
-The es5 version depends unpon Object.assign, element.classList, and Promises so all evergreen browsers are supported out of the box, ie9+ is supported with polyfills. ie8+ will work with even more polyfils for Array functions and eventListeners.
+The es5 version depends upon Object.assign, element.classList, and Promises so all evergreen browsers are supported out of the box, ie9+ is supported with polyfills. ie8+ will work with even more polyfills for Array functions and eventListeners.
 
 ##Dependencies
 None
