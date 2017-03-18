@@ -1,5 +1,4 @@
 const defaults = {
-	delay: 200,
 	callback: null
 };
 

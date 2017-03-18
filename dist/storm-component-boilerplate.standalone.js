@@ -1,6 +1,6 @@
 /**
  * @name storm-component-boilerplate: 
- * @version 0.2.9: Fri, 27 Jan 2017 13:58:10 GMT
+ * @version 0.2.9: Sat, 18 Mar 2017 10:38:47 GMT
  * @author stormid
  * @license MIT
  */
@@ -24,7 +24,6 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 var defaults = {
-	delay: 200,
 	callback: null
 };
 

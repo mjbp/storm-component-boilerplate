@@ -8,7 +8,7 @@ Before use make sure to grep for “storm-component-boilerplate” and replace e
 ---
 
 
-#Component Name
+# Component Name
 
 [![Build Status](https://travis-ci.org/mjbp/storm-component-boilerplate.svg?branch=master)](https://travis-ci.org/mjbp/storm-component-boilerplate)
 [![codecov.io](http://codecov.io/github/mjbp/storm-component-boilerplate/coverage.svg?branch=master)](http://codecov.io/github/mjbp/storm-component-boilerplate?branch=master)
@@ -16,11 +16,11 @@ Before use make sure to grep for “storm-component-boilerplate” and replace e
 
 One line summary
 
-##Example
+## Example
 [https://mjbp.github.io/storm-component-boilerplate](https://mjbp.github.io/storm-component-boilerplate)
 
 
-##Usage
+## Usage
 HTML
 ```
 <div class="js-boilerplate"></div>
@@ -36,20 +36,19 @@ import Boilerplate from 'storm-component-boilerplate';
 
 Boilerplate.init('.js-boilerplate');
 ```
-aynchronous browser loading (use the .standalone version in the /dist folder)
+aynchronous browser loading (use the .standalone version in the /dist folder) using the global name (Storm + capitalised package name)
 ```
 import Load from 'storm-load';
 
 Load('{{path}}/storm-component-boilerplate.standalone.js')
     .then(() => {
-        StormComponentBoilerplate.init('.js-component-boilerplate');
+        StormComponentBoilerplate.init('.js-boilerplate');
     });
 ```
 
-##Options
+## Options
 ```
 {
-    delay: 200,
     callback: null
 }
 ```
@@ -63,18 +62,18 @@ Boilerplate.init('.js-selector', {
 });
 ```
 
-##Tests
+## Tests
 ```
 npm run test
 ```
 
-##Browser support
+## Browser support
 This is module has both es6 and es5 distributions. The es6 version should be used in a workflow that transpiles.
 
 The es5 version depends upon Object.assign, element.classList, and Promises so all evergreen browsers are supported out of the box, ie9+ is supported with polyfills. ie8+ will work with even more polyfills for Array functions and eventListeners.
 
-##Dependencies
+## Dependencies
 None
 
-##License
+## License
 MIT
