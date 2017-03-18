@@ -10,7 +10,6 @@ document.body.innerHTML = html;
   
 let components = Boilerplate.init('.js-boilerplate'),
     componentsTwo = Boilerplate.init.call(Boilerplate, '.js-boilerplate-two', {
-      delay:400,
       callback(){
         this.DOMElement.classList.toggle('callback-test');
       }
@@ -56,7 +55,7 @@ describe('Initialisation', () => {
   
   it('should initialisation with different settings if different options are passed', () => {
 
-    should(componentsTwo[0].settings.delay).not.equal(components[0].settings.delay);
+    should(componentsTwo[0].settings.callback).not.equal(components[0].settings.callback);
   
   });
 
