@@ -36,7 +36,7 @@ import Boilerplate from 'storm-component-boilerplate';
 
 Boilerplate.init('.js-boilerplate');
 ```
-aynchronous browser loading (use the .standalone version in the /dist folder) using the global name (Storm + capitalised package name)
+asynchronous browser loading (use the .standalone version in the /dist folder) using the global name (Storm + capitalised package name)
 ```
 import Load from 'storm-load';
 
