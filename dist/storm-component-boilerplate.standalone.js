@@ -1,6 +1,6 @@
 /**
  * @name storm-component-boilerplate: 
- * @version 1.0.0: Sun, 02 Apr 2017 18:22:27 GMT
+ * @version 1.0.0: Sun, 02 Apr 2017 18:45:51 GMT
  * @author stormid
  * @license MIT
  */
@@ -23,6 +23,23 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
+var defaults = {
+	callback: null
+};
+
+var componentPrototype = {
+	init: function init() {
+		this.DOMElement.addEventListener('click', this.handleClick.bind(this), false);
+
+		return this;
+	},
+	anotherOne: function anotherOne() {},
+	handleClick: function handleClick() {
+		this.DOMElement.classList.toggle('clicked');
+		!!(this.settings.callback && this.settings.callback.constructor && this.settings.callback.call && this.settings.callback.apply) && this.settings.callback.call(this);
+	}
+};
+
 var init = function init(sel, opts) {
 	var els = [].slice.call(document.querySelectorAll(sel));
 	//let els = Array.from(document.querySelectorAll(sel));
