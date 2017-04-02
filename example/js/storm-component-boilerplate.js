@@ -1,23 +1,11 @@
 /**
  * @name storm-component-boilerplate: 
- * @version 0.2.9: Sat, 18 Mar 2017 10:38:47 GMT
+ * @version 1.0.0: Sun, 02 Apr 2017 18:05:14 GMT
  * @author stormid
  * @license MIT
  */
-const defaults = {
-	callback: null
-};
-
-const StormComponentPrototype = {
-	init() {
-		this.DOMElement.addEventListener('click', this.handleClick.bind(this), false);
-		return this;
-	},
-	handleClick() {
-		this.DOMElement.classList.toggle('clicked');
-		!!(this.settings.callback && this.settings.callback.constructor && this.settings.callback.call && this.settings.callback.apply) && this.settings.callback.call(this);
-	}
-};
+import defaults from './libs/defaults';
+import component from './libs/component'
 
 const init = (sel, opts) => {
 	let els = [].slice.call(document.querySelectorAll(sel));
@@ -26,7 +14,7 @@ const init = (sel, opts) => {
 	if(!els.length) throw new Error('Boilerplate cannot be initialised, no augmentable elements found');
     
 	return els.map((el) => {
-		return Object.assign(Object.create(StormComponentPrototype), {
+		return Object.assign(Object.create(component), {
 			DOMElement: el,
 			settings: Object.assign({}, defaults, opts)
 		}).init();
