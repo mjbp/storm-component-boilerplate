@@ -11,7 +11,8 @@
   "bugs": {
     "url": "https://github.com/mjbp/storm-component-boilerplate/issues"
   },
-  "main": "dist/storm-component-boilerplate.js",
+  "main": "dist/index.js",
+  "browser": "dist/storm-component-boilerplate.standalone.js",
   "keywords": [
     "stormid",
     "boilerplate",

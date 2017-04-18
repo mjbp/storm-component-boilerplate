@@ -120,7 +120,7 @@ gulp.task('js', ['js:es6', 'js:es5-rollup']);
 
 gulp.task('copy', function() {
     return gulp.src('./src/**/*.js')
-		.pipe(gulp.dest('./example/src/libs/'));
+		.pipe(gulp.dest('./example/src/libs/component'));
 });
 
 gulp.task('example:import', function(){
@@ -135,7 +135,7 @@ gulp.task('example:import', function(){
         .pipe(gulp.dest('./example/js'));
 });
 gulp.task('example:async', function(){
-    return gulp.src('./dist/*.js')
+    return gulp.src('./dist/*.standalone.js')
 		.pipe(gulp.dest('./example/js/'));
 });
 gulp.task('example', ['example:import', 'example:async']);
