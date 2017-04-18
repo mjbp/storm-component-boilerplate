@@ -11,7 +11,8 @@
   "bugs": {
     "url": "https://github.com/mjbp/storm-component-boilerplate/issues"
   },
-  "main": "dist/storm-component-boilerplate.js",
+  "main": "dist/index.js",
+  "browser": "dist/storm-component-boilerplate.standalone.js",
   "keywords": [
     "stormid",
     "boilerplate",
@@ -62,5 +63,11 @@
     "should": "^11.1.1",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
+  },
+  "dependencies": {
+    "gulp-rollup": "^2.11.0",
+    "rollup": "^0.41.6",
+    "rollup-plugin-commonjs": "^8.0.2",
+    "rollup-plugin-node-resolve": "^3.0.0"
   }
 }

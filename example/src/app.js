@@ -1,4 +1,4 @@
-import Boilerplate from './libs/storm-component-boilerplate';
+import Boilerplate from './libs/component';
 
 const onDOMContentLoadedTasks = [() => {
     Boilerplate.init('.js-boilerplate');
