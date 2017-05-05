@@ -1,11 +1,11 @@
 /**
  * @name storm-component-boilerplate: 
- * @version 1.0.0: Tue, 18 Apr 2017 16:33:36 GMT
+ * @version 1.1.1: Fri, 05 May 2017 10:01:06 GMT
  * @author stormid
  * @license MIT
  */
-import defaults from './libs/defaults';
-import componentPrototype from './libs/component-prototype';
+import defaults from './lib/defaults';
+import componentPrototype from './lib/component-prototype';
 
 const init = (sel, opts) => {
 	let els = [].slice.call(document.querySelectorAll(sel));
