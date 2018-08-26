@@ -1,6 +1,6 @@
 /**
  * @name storm-component-boilerplate: 
- * @version 0.2.9: Fri, 27 Jan 2017 13:58:10 GMT
+ * @version 1.1.1: Fri, 05 May 2017 09:58:05 GMT
  * @author stormid
  * @license MIT
  */
@@ -14,7 +14,7 @@
        module.exports = mod.exports.default
    } else {
        factory(mod.exports);
-       root.StormComponentBoilerplate = mod.exports.default
+       root.gulpWrapUmd = mod.exports.default
    }
 
 }(this, function(exports) {
@@ -24,17 +24,17 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 var defaults = {
-	delay: 200,
 	callback: null
 };
 
-var StormComponentPrototype = {
+var componentPrototype = {
 	init: function init() {
-		this.DOMElement.addEventListener('click', this.handleClick.bind(this), false);
+		this.node.addEventListener('click', this.handleClick.bind(this), false);
+
 		return this;
 	},
 	handleClick: function handleClick() {
-		this.DOMElement.classList.toggle('clicked');
+		this.node.classList.toggle('clicked');
 		!!(this.settings.callback && this.settings.callback.constructor && this.settings.callback.call && this.settings.callback.apply) && this.settings.callback.call(this);
 	}
 };
@@ -43,15 +43,17 @@ var init = function init(sel, opts) {
 	var els = [].slice.call(document.querySelectorAll(sel));
 	//let els = Array.from(document.querySelectorAll(sel));
 
-	if (!els.length) throw new Error('Boilerplate cannot be initialised, no augmentable elements found');
+	if (!els.length) return console.warn('Boilerplate not initialised, no augmentable elements found');
 
 	return els.map(function (el) {
-		return Object.assign(Object.create(StormComponentPrototype), {
-			DOMElement: el,
+		return Object.assign(Object.create(componentPrototype), {
+			node: el,
 			settings: Object.assign({}, defaults, opts)
 		}).init();
 	});
 };
 
-exports.default = { init: init };;
+var index = { init: init };
+
+exports.default = index;;
 }));

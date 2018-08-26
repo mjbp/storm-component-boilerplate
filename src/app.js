@@ -1,7 +1,5 @@
-import Boilerplate from './libs/storm-component-boilerplate';
-
-const onDOMContentLoadedTasks = [() => {
-    Boilerplate.init('.js-boilerplate');
-}];
+import Boilerplate from '../../src';
     
-if('addEventListener' in window) window.addEventListener('DOMContentLoaded', () => { onDOMContentLoadedTasks.forEach((fn) => fn()); });
+window.addEventListener('DOMContentLoaded', () => { 
+    Boilerplate.init('.js-boilerplate');
+});
