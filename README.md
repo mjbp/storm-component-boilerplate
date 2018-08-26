@@ -1,6 +1,6 @@
 This is a **boilerplate for developing UI components** by **StormId**, used in production in conjunction with our project scaffold.
 
-It includes an opinionated JS component boilerplate, build system, test integration, example, README (see below), and deployment, using nodeJS, npm, gulp, mocha, shouldjs, instanbul, babel, travis ci, and codecov.
+It includes an opinionated JS component boilerplate, build system, test integration, example, README (see below), and deployment, using nodeJS, npm, gulp, jest, and babel
 
 Before use make sure to grep for “storm-component-boilerplate” and replace every occurrence as well as updating your tests, readme and example.
 

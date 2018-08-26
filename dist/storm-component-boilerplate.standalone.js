@@ -1,6 +1,6 @@
 /**
  * @name storm-component-boilerplate: 
- * @version 1.1.1: Fri, 05 May 2017 10:01:07 GMT
+ * @version 1.2.3: Sun, 26 Aug 2018 21:27:24 GMT
  * @author stormid
  * @license MIT
  */
@@ -14,7 +14,7 @@
        module.exports = mod.exports.default
    } else {
        factory(mod.exports);
-       root.gulpWrapUmd = mod.exports.default
+       root.StormComponentBoilerplate = mod.exports.default
    }
 
 }(this, function(exports) {
@@ -27,16 +27,18 @@ var defaults = {
 	callback: null
 };
 
-var componentPrototype = {
-	init: function init() {
-		this.node.addEventListener('click', this.handleClick.bind(this), false);
+var factory = function factory() {
+	return {
+		init: function init() {
+			this.node.addEventListener('click', this.handleClick.bind(this), false);
 
-		return this;
-	},
-	handleClick: function handleClick() {
-		this.node.classList.toggle('clicked');
-		!!(this.settings.callback && this.settings.callback.constructor && this.settings.callback.call && this.settings.callback.apply) && this.settings.callback.call(this);
-	}
+			return this;
+		},
+		handleClick: function handleClick() {
+			this.node.classList.toggle('clicked');
+			!!(this.settings.callback && this.settings.callback.constructor && this.settings.callback.call && this.settings.callback.apply) && this.settings.callback.call(this);
+		}
+	};
 };
 
 var init = function init(sel, opts) {
@@ -46,7 +48,7 @@ var init = function init(sel, opts) {
 	if (!els.length) return console.warn('Boilerplate not initialised, no augmentable elements found');
 
 	return els.map(function (el) {
-		return Object.assign(Object.create(componentPrototype), {
+		return Object.assign(Object.create(factory()), {
 			node: el,
 			settings: Object.assign({}, defaults, opts)
 		}).init();

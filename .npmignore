@@ -1,7 +1,7 @@
 .DS_Store
 *.log
 src
-test
+__test__
 example
 coverage
 node_modules
